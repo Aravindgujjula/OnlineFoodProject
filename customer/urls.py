@@ -1,0 +1,37 @@
+"""OnlineFood URL Configuration
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/3.0/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+from django.contrib import admin
+from django.urls import path
+
+from customer import views
+
+urlpatterns = [
+    path('',views.showindex,name = "index"),
+    path('customer_register/',views.customer_register,name="customer_register"),
+    path('customer_save/',views.customer_save,name="customer_save"),
+    path('customer_check_otp/',views.customer_check_otp,name="customer_check_otp"),
+    path('customer_login//',views.customer_login,name = "customer_login"),
+    path('customer_login_check/',views.customer_login_check,name="customer_login_check"),
+    path('customer_welcome/<int:pk>/',views.customer_welcome,name='customer_welcome'),
+    path('customer_logout/',views.customer_login_check,name="customer_logout"),
+    path('customer_menu/',views.customer_menu,name="customer_menu"),
+    path('add_to_cart',views.add_to_cart,name="add_to_cart"),
+    path('customer_quantity/',views.customer_quantity,name="customer_quantity"),
+    path('customer_save_to_cart/',views.customer_save_to_cart,name="customer_save_to_cart"),
+    path('customer_cart_items/',views.customer_cart_items,name="customer_cart_items"),
+    path('customer_order/',views.customer_order,name = "customer_order"),
+    path('customer_order_placed/',views.customer_order_placed,name = "customer_order_placed"),
+]

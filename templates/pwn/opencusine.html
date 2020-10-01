@@ -1,0 +1,39 @@
+{% extends 'pwn/welcome.html' %}
+
+{% block admin_welcome %}
+
+     <div class="col-sm-6">
+        <h1>Cusine Page</h1>
+    </div>
+
+    <form action="{% url 'savecusine' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table align="center" border="2">
+    <tr>
+        <th>
+            <input type="text" placeholder="Cusine" name = "c1" required>
+            <input type="file" name="c2" required>
+            <button type="submit">save</button>
+        </th>
+    </tr>
+    </table>
+    </form>
+
+    <table align="center" border="2">
+    <tr>
+        <th>ID</th>
+        <th>Type</th>
+        <th>Photo</th>
+    </tr>
+    {% for c_datum in c_data %}
+        <tr>
+            <th>{{ c_datum.id }}</th>
+            <th>{{ c_datum.type }}</th>
+            <th><img src="{{ c_datum.photo.url }}" width="50" height="50"> </th>
+        </tr>
+    {% endfor %}
+
+    </table>
+
+
+{% endblock %}
